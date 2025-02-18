@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 버튼 클릭 게임</title>
+</head>
+<body>
+    <h3>버튼을 누르면 숫자가 올라가요</h3>
+    <button id="number">숫자 증가 -> 1</button>  <!-- onclick 삭제 -->
+</body>
+<script>
+    // 버튼 요소 가져오기
+    const button = document.getElementById("number");
+
+    // 숫자를 저장할 변수 선언
+    let count = 1;
+
+    // 버튼 클릭 시 실행할 함수 추가
+    button.addEventListener("click", function() {
+        count++;  // count 값 1 증가
+        button.innerText = `숫자 증가 -> ${count}`;  // 버튼 텍스트 업데이트
+    });
+</script>
+</html>

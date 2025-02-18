@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞히기 게임 만들기</title>
+</head>
+<body>
+    <h2>숫자 맞히기 게임</h2>
+    <hr>
+    <h3>버튼을 누르면 게임 시작</h3>
+    <button onclick="fn_change()">시작!</button>
+</body>
+<script>
+    function fn_change() {
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
+        console.log("랜덤숫자: " + randomNumber);   // 디버깅용 (정답확인)
+
+        let number = 0;
+
+        while(number !== randomNumber) {
+            let number = Number(prompt("1~10 사이의 숫자를 입력하세요!"));
+
+            if(number < randomNumber){
+                alert("더 큰 숫자를 입력하세요!!");
+            } else if(number > randomNumber) {
+                alert("더 작은 숫자를 입력하세요!!");
+            } else {
+                alert("정답입니다!!!");
+                break;
+            }
+        }
+    }
+</script>
+</html>

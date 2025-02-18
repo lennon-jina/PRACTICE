@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업그레이드된 계산기</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>간단한 계산기</h2>
+    <hr>
+    
+    <input type="number" id="num1" placeholder="첫 번째 숫자 입력">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">×</option>
+        <option value="/">÷</option>
+    </select>
+    <input type="number" id="num2" placeholder="두 번째 숫자 입력">
+    
+    <br>
+    <button onclick="calculate()">계산하기</button>
+    
+    <h3>결과: <span id="result">-</span></h3>
+
+    <script>
+        function calculate() {
+            // 입력값 가져오기
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            // 🚨 숫자가 아닌 경우 예외 처리
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("숫자를 정확히 입력하세요!");
+                return;
+            }
+
+            // 🚨 연산 실행
+            if (operator === "+") {
+                result = num1 + num2;
+            } else if (operator === "-") {
+                result = num1 - num2;
+            } else if (operator === "*") {
+                result = num1 * num2;
+            } else if (operator === "/") {
+                // 🚨 0으로 나누기 예외 처리
+                if (num2 === 0) {
+                    alert("0으로 나눌 수 없습니다!");
+                    return;
+                }
+                result = num1 / num2;
+            }
+
+            // 결과 표시
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>

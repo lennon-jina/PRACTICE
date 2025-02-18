@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경색 바꾸기(랜덤)</title>
+</head>
+<body>
+    <h3>버튼을 클릭하면 배경색이 바껴요</h3>
+    <hr>
+    <button onclick="fn_change()">클릭 !</button>
+</body>
+<script>
+
+    function fn_change() {
+        let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
+        document.body.style.background = randomColor
+    }
+
+</script>
+</html>
