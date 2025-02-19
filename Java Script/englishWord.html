@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대문자와 소문자 변환</title>
+</head>
+<body>
+    <h2>대문자와 소문자 변환</h2>
+    <input type="text" id="words">
+    <button onclick="fn_change()">입력</button>
+    <h3>결과: <span id="resultWords">-</span></h3>
+</body>
+<script>
+    // 사용자가 엔터만 쳐도 될 수 있게 !!
+    addEventListener("keypress", function(event) { if (event.key === "Enter") fn_change(); });
+
+    function fn_change() {
+        let sentence = document.getElementById("words").value;
+        let splitWords = sentence.split(" ");
+        let Words = splitWords.map(word => 
+            word.split("").map(char =>
+                char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
+            ).join("")
+        );
+        let result = Words.join(" ");
+        document.getElementById("resultWords").innerText = result;
+    }
+</script>
+</html> 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 뒤집기</title>
+</head>
+<body>
+    <h2>단어 뒤집기 게임!</h2>
+    <hr>
+    <h3>단어를 입력하면 뒤집어줘요</h3>
+    <input type="text" id="inputText">
+    <button onclick="fn_change()">클릭 !</button> <br><br>
+    <h3>결과: <span id="reverse">-</span></h3>
+</body>
+<script>
+    
+    
+    function fn_change() {
+        // 버튼 클릭시 입력값을 가져와야 함 
+        let sentence = document.getElementById("inputText").value;
+        let words = sentence.split(" ");   // 단어별로 배열
+        let reverseWords = words.map(word => word.split("").reverse().join(""));
+        let result = reverseWords.join(" ");
+        document.getElementById("reverse").innerText = result;
+
+        document.getElementById("inputText").value = "";
+    }
+</script>
+</html>

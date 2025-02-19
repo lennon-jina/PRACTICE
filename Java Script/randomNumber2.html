@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞히기 게임</title>
+</head>
+<body>
+    <h2>숫자 맞히기 게임</h2>
+    <hr>
+    <h3>빈칸에 숫자를 넣어주세요</h3>
+
+    <input type="number" id="nm" min="1" max="100">
+    <button onclick="fn_change()">입력</button>
+    <button onclick="resetGame()">재시작</button>
+
+    <h4>결과: <span id="answer">-</span></h4>
+    <h4>시도 횟수: <span id="attemps">0</span></h4>
+</body>
+<script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    console.log(randomNumber);
+    let attemps = 0;
+
+    function fn_change() {
+        let inputField = document.getElementById("nm");
+        let number = Number(inputField.value);
+        let attempsText = document.getElementById("attemps");
+        let answerText = document.getElementById("answer");
+
+        if(isNaN(number) || number > 100 || number < 1 ) {
+            answerText.innerText = "😡 1~ 100 사이의 숫자를 입력하세요";
+            return;
+         } 
+
+        attemps++;
+        attempsText.innerText = attemps;
+
+        if(number < randomNumber) {
+            answerText.innerText = "업!";
+        } else if(number > randomNumber) {
+            answerText.innerText = "다운!";
+        } else {
+            answerText.innerText =  `정답입니다 !! 시도 횟수: ${attemps}번`;
+            document.getElementById("nm").disabled = true;
+        }
+
+        inputField.value = "";
+        inputField.focus();
+    
+    }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            console.log(randomNumber);
+            attemps = 0;
+            document.getElementById("nm").disabled = false;
+            document.getElementById("nm").value = "";
+            document.getElementById("answer").innerText = "-";
+            document.getElementById("attemps").innerText = "0";
+
+        }
+    
+</script>
+</html>
