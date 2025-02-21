@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-LIST</title>
+</head>
+<body>
+    <h2>TO DO LIST</h2>
+    <hr>
+    <h3>할일을 작성하세요 !</h3>
+    <input type="text" id="todolist">
+    <button onclick="fn_change()">추가</button>
+    <ul>
+
+    </ul>
+</body>
+<script>
+    function fn_change() {
+        let todo = document.getElementById("todolist").value;
+
+        let li = document.createElement("li");
+        li.innerText = todo;
+
+        let delBtn = document.createElement("button");
+        delBtn.innerText = "삭제";
+        delBtn.onclick = function() {
+            li.remove();
+        };
+
+        li.appendChild(delBtn);
+        document.querySelector("ul").appendChild(li);
+       
+        document.getElementById("todolist").value = " ";
+    }
+    
+</script>
+</html>
